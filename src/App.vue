@@ -77,6 +77,28 @@
          </div>
       </div> -->
     </div>
+    <!-- tweets -->
+    <div class="w-1/2 h-full">
+
+    </div>
+    <!-- trending -->
+    <div class="bg-light w-1/3 h-full border-l items-center border-lighter py-2 px-6 overflow-y-scroll relative">
+      <input class="pl-12 rounded-full w-full bg-lighter p-2 text-sm"  placeholder="Search twitter"/>
+      <i class="fas fa-search absolute left-0 top-0 mt-5 ml-12 text-sm text-light"></i>
+      <div class="w-full rounded-lg bg-lightest">
+        <div class="flex items-center justify-between p-3">
+          <p class="text-lg font-bold">Trends for You</p>
+          <i class="fas fa-cog text-lg font-bold"></i>
+        </div>
+        <button :key="trend.title" v-for="trend in trending" class="w-full flex justify-between hover:bg-lighter p-3">
+          <div>
+            <p class="text-sm text-left leading-tight">
+              {{ trend.title }}
+            </p>
+          </div>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -107,6 +129,13 @@ export default {
       ],
       id: "home",
       dropdown: false,
+      trending: [
+        {top: 'Trending in TX', title: 'Gigi', bottom: 'Trending with: Rip Gigi'},
+        {top: 'Music', title: 'We Won', bottom: '135K Tweets'},
+        {top: 'Pop', title: 'Blue Ivy', bottom: '40k tweets'},
+        {top: 'Trending in US', title: 'Denim Day', bottom: '40k tweets'},
+        {top: 'Trending', title: 'When Beyonce', bottom: '25.4k tweets'},
+      ],
     };
   },
 };
