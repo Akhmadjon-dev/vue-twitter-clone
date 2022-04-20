@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex container h-screen w-full">
+  <div id="app" class="flex h-screen w-full">
     <!-- side bar -->
     <div class="lg:w-1/5 border-r border-lighter px-2 lg:px-6 py-2 flex flex-col justify-between">
       <div>
@@ -67,8 +67,8 @@
         <div class="flex-none">
           <img src="https://cdn.pixabay.com/photo/2012/04/18/23/36/boy-38262__340.png" class="flex-none w-12 h-12 rounded-full border border-lighter"/>
         </div>
-        <form v-on:submit.prevent = "addNewTweet" class="w-full px-4 relative">
-          <textarea v-model="tweet.content" placeholder="What's up?" class="mt-3 pb-3 w-full focus:outline-none"/>
+        <form @submit= "addNewTweet" class="w-full px-4 relative">
+          <input v-model="tweet.content" placeholder="What's up?" class="mt-3 pb-3 w-full focus:outline-none"/>
           <div class="flex items-center">
             <i class="text-lg text-blue mr-4 far fa-image"></i>
             <i class="text-lg text-blue mr-4 fas fa-film"></i>
@@ -217,10 +217,6 @@ export default {
   components: {
     // Main,
   },
-  updated(){
-    console.log(this.$content)
-    console.log(this.$data)
-  },
   data() {
     return {
       tabs: [
@@ -265,10 +261,12 @@ export default {
       console.log(id);
       this.id = id;
     },
-    addNewTweet() {
+    addNewTweet(e) {
+      e.preventDefault()
       let newTweet = {
         content: this.tweet.content
       };
+      this.tweet.content = ''
       this.tweets.push (newTweet)
     }
   }
